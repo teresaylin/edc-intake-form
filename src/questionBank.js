@@ -87,7 +87,8 @@ const questions = [
   {
     question: "What is the address of your emergency contact?",
     description: null,
-    inputType: "fullAddress",
+    // inputType: "fullAddress",
+    inputType: "text",
     required: false,
     section: "Emergency Contact"
   },
