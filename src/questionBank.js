@@ -14,11 +14,12 @@ const questions = [
     section: "Client Information"
   },
   {
-    question: "Last 4 digits of your SSN",
+    question: "What is the address that you are being evicted from?",
     description: null,
-    inputType: "social",
+    inputType: "text",
+    // inputType: "localAddress",
     required: false,
-    section: "Client Information"
+    section: "Client Address"
   },
   {
     question: "Phone number",
@@ -30,31 +31,35 @@ const questions = [
   {
     question: "Email",
     description: null,
-    inputType: "email",
+    // inputType: "email",
+    inputType: "text",
     required: false,
     section: "Client Information"
   },
   {
-    question: "What is the address that you are being evicted from?",
+    question: "Last 4 digits of your SSN",
     description: null,
-    inputType: "localAddress",
+    inputType: "social",
     required: false,
-    section: "Client Address"
+    section: "Client Information"
   },
-  {
-    question:
-      "Would you like to receive important notifications and documents about the case at this address?",
-    description: null,
-    inputType: "boolean",
-    required: false,
-    section: "Client Address"
-  },
+
+  // {
+  //   question:
+  //     "Would you like to receive important notifications and documents about the case at this address?",
+  //   description: null,
+  //   inputType: "boolean",
+  //   required: false,
+  //   section: "Client Address"
+  // },
   {
     question:
       "Where would you like to receive important notifications and documents?",
     description: null,
-    inputType: "fullAddress",
+    // inputType: "fullAddress",
+    inputType: "text",
     required: false,
+
     section: "Mailing Address"
   },
   {

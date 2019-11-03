@@ -18,25 +18,30 @@ const Pad = styled.div`
 `;
 
 export default class NumberPad extends Component {
-	pad = React.createRef();
-
 	state = {
 		numbers: []
 	};
 
 	constructor(props) {
 		super(props);
+		this.createNumberRefs();
+	}
 
-		const { inputType } = this.props;
+	createNumberRefs() {
+		const { inputType, page } = this.props;
 		const numberDigits = digits[inputType];
 
 		for (let i = 0; i < numberDigits; i++) {
-			this[`num_${i}`] = React.createRef();
+			this[`num_${i}_${page}`] = React.createRef();
 		}
 	}
 
 	componentWillMount() {
-		const { inputType, nextBtn } = this.props;
+		this.setupPad();
+	}
+
+	setupPad() {
+		const { inputType, page } = this.props;
 		const numberDigits = digits[inputType];
 		const inputs = [];
 
@@ -45,7 +50,7 @@ export default class NumberPad extends Component {
 				case 0:
 					inputs.push(
 						<NumberInputLeft
-							ref={this[`num_${i}`]}
+							ref={this[`num_${i}_${page}`]}
 							key={i}
 							type="number"
 							placeholder="X"
@@ -55,7 +60,7 @@ export default class NumberPad extends Component {
 				case numberDigits - 1:
 					inputs.push(
 						<NumberInputRight
-							ref={this[`num_${i}`]}
+							ref={this[`num_${i}_${page}`]}
 							key={i}
 							type="number"
 							placeholder="X"
@@ -65,7 +70,7 @@ export default class NumberPad extends Component {
 				default:
 					inputs.push(
 						<NumberInputMid
-							ref={this[`num_${i}`]}
+							ref={this[`num_${i}_${page}`]}
 							key={i}
 							type="number"
 							placeholder="X"
@@ -81,27 +86,31 @@ export default class NumberPad extends Component {
 	}
 
 	componentDidMount() {
-		const { showNext } = this.props;
-		this.num_0.current.focus();
+		const { showNext, page, nextPage } = this.props;
+		this[`num_0_${page}`].current.focus();
 
 		const { numbers } = this.state;
 		for (let i = 0; i < numbers.length; i++) {
-			this[`num_${i}`].current.addEventListener("keypress", e => {
+			this[`num_${i}_${page}`].current.addEventListener("keypress", e => {
 				showNext();
-				if (i + 1 !== numbers.length) this[`num_${i + 1}`].current.focus();
+
+				const key = e.which || e.keyCode;
+				if (key === 13) {
+					nextPage();
+				} else if (i + 1 !== numbers.length)
+					this[`num_${i + 1}_${page}`].current.focus();
 			});
 		}
 	}
 
 	componentDidUpdate(prevProps) {
-		// if (prevProps.page !== this.props.page) {
-		// 	// render();
-		// }
+		if (prevProps.page !== this.props.page) {
+			this.setupPad();
+		}
 	}
 
 	// todo submit button
 	render() {
-		console.log("number input type:", this.props.inputType);
 		const { numbers } = this.state;
 		return <Pad ref={this.pad}>{numbers}</Pad>;
 	}

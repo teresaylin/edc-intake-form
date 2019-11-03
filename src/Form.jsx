@@ -10,7 +10,7 @@ import NumberPad from "./NumberPad";
 import Answer from "./Answer";
 
 export default class Form extends Component {
-	// inputBox = React.createRef();
+	inputBox = React.createRef();
 	nextBtn = React.createRef();
 
 	state = {
@@ -25,7 +25,7 @@ export default class Form extends Component {
 		//
 		// this.inputBox.current.focus();
 		// this.inputBox.current.addEventListener("keypress", e => {
-		// 	this.nextBtn.current.style.visibility = "visible";
+		// 	// this.nextBtn.current.style.visibility = "visible";
 		// 	const key = e.which || e.keyCode;
 		// 	if (key === 13) {
 		// 		// 13 is enter
@@ -81,9 +81,6 @@ export default class Form extends Component {
 						nextPage={this.nextPage}
 						page={page}
 					/>
-					{/*<NumberPad inputType={"phone"} />*/}
-					{/*<Input ref={this.inputBox} type={inputType} placeholder="type here" />*/}
-					{/*<Text ref={this.inputBox} inputType={this.inputType} />*/}
 					<Wrapper>
 						<Button
 							ref={this.nextBtn}
