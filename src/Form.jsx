@@ -10,7 +10,7 @@ import {
 	Button,
 	SelectButton,
 	SkipButton,
-	PreviousButton,
+	PreviousButton
 } from "./styles";
 import QUESTIONS from "./questionBank";
 
@@ -28,23 +28,6 @@ export default class Form extends Component {
 		primaryBtn: false,
 		hoverBtn: false
 	};
-
-	componentDidMount() {
-		// for Text input separated out
-		// this.inputBox.current.setFocus();
-		//
-		// this.inputBox.current.focus();
-		// this.inputBox.current.addEventListener("keypress", e => {
-		// 	// this.nextBtn.current.style.visibility = "visible";
-		// 	const key = e.which || e.keyCode;
-		// 	if (key === 13) {
-		// 		// 13 is enter
-		// 		// save information to state, flip to next page
-		// 		console.log("enter");
-		// 		this.nextPage();
-		// 	}
-		// });
-	}
 
 	showNext = () => {
 		this.nextBtn.current.style.visibility = "visible";
@@ -96,45 +79,52 @@ export default class Form extends Component {
 	// todo submit button
 	render() {
 		const { page } = this.state;
-		const { question, inputType, options } = QUESTIONS[page];
+		const { question, inputType, options } =
+			page < QUESTIONS.length ? QUESTIONS[page] : {};
 
-		console.log("Form options: ", options);
+		const progress = page < QUESTIONS.length ? page / QUESTIONS.length : 1;
+
 		return (
 			<ThemeProvider theme={this.state}>
-				<Header progress={page / QUESTIONS.length}/>
+				<Header progress={progress} />
 				<Container>
-					<Question>{QUESTIONS[page].question}</Question>
-					<Answer
-						inputType={inputType}
-						showNext={this.showNext}
-						nextPage={this.nextPage}
-						page={page}
-						options={options}
-					/>
-					<Wrapper>
-						{ page !== 0 ? (
-							<PreviousButton
-								onClick={this.previousPage}
+					{progress < 1 ? (
+						<Question>{QUESTIONS[page].question}</Question>
+					) : (
+						<Question>
+							You have completed the form! Someone will be in touch with you
+							soon.
+						</Question>
+					)}
+					{progress < 1 && (
+						<Answer
+							inputType={inputType}
+							showNext={this.showNext}
+							nextPage={this.nextPage}
+							page={page}
+							options={options}
+						/>
+					)}
+					{progress < 1 && (
+						<Wrapper>
+							{page !== 0 ? (
+								<PreviousButton onClick={this.previousPage}>
+									Previous
+								</PreviousButton>
+							) : null}
+							<Button
+								ref={this.nextBtn}
+								onClick={this.nextPage}
+								onMouseEnter={this.buttonHover}
+								onMouseLeave={this.buttonUnhover}
 							>
-								Previous
-							</PreviousButton>
-						) : null }
-						<Button
-							ref={this.nextBtn}
-							onClick={this.nextPage}
-							onMouseEnter={this.buttonHover}
-							onMouseLeave={this.buttonUnhover}
-						>
-							Next
-						</Button>
-						{ !QUESTIONS[page].required ? (
-							<SkipButton
-								onClick={this.onSkip}
-							>
-								Skip
-							</SkipButton>
-						) : null}
-					</Wrapper>
+								Next
+							</Button>
+							{!QUESTIONS[page].required ? (
+								<SkipButton onClick={this.onSkip}>Skip</SkipButton>
+							) : null}
+						</Wrapper>
+					)}
 				</Container>
 			</ThemeProvider>
 		);

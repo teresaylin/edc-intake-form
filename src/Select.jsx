@@ -30,23 +30,38 @@ export default class Select extends Component {
 
 	hover(index) {
 		const elem = this[`btn_${index}`].current;
-		elem.style.background = "#70dbb8";
-		elem.style.color = "white";
+		if (elem) {
+			elem.style.background = "#70dbb8";
+			elem.style.color = "white";
+		}
 	}
 
 	unhover(index) {
 		const elem = this[`btn_${index}`].current;
-		elem.style.background = "transparent";
-		elem.style.color = "#70dbb8";
+		if (elem) {
+			elem.style.background = "transparent";
+			elem.style.color = "#70dbb8";
+		}
 	}
 
-	constructor(props) {
-		super(props);
+	// constructor(props) {
+	// 	super(props);
 
+	// }
+
+	createRefs() {
 		const { options } = this.props;
 		options.forEach((option, index) => {
 			this[`btn_${index}`] = React.createRef();
 		});
+	}
+
+	componentDidMount() {
+		this.createRefs();
+	}
+
+	componentDidUpdate() {
+		this.createRefs();
 	}
 
 	// todo submit button

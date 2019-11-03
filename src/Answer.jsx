@@ -36,6 +36,7 @@ export default class Answer extends Component {
 
 			case "select":
 				elem = <Select options={options} nextPage={nextPage} />;
+				break;
 		}
 
 		return elem || <div></div>;
