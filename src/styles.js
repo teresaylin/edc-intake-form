@@ -68,3 +68,7 @@ export const Button = styled.button`
 			border: 2px solid #edb6c8;
 		`}
 `;
+
+export const SelectButton = styled(Button)`
+	visibility: visible;
+`;

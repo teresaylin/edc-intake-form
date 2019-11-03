@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { ThemeProvider } from "styled-components";
 
-import { Question, Input, Container, Wrapper, Button } from "./styles";
+import { Question, Input, Container, Wrapper, Button, SelectButton } from "./styles";
 import QUESTIONS from "./questionBank";
 
 import Text from "./Text";
@@ -51,6 +51,22 @@ export default class Form extends Component {
 		this.nextBtn.current.style.visibility = "hidden";
 	};
 
+	previousPage = () => {
+		const { page } = this.state;
+		if (page === 0) return;
+		this.setState({
+			page: page - 1
+		});
+	};
+
+	skipPage = () => {
+		const { page } = this.state;
+		if (QUESTIONS[page].required) return;
+
+		// TODO: Mark question as skipped
+		this.nextPage();
+	};
+
 	buttonHover = () => {
 		this.setState({
 			...this.state,
@@ -82,6 +98,13 @@ export default class Form extends Component {
 						page={page}
 					/>
 					<Wrapper>
+						{ page !== 0 ? (
+							<SelectButton
+								onClick={this.previousPage}
+							>
+								Previous
+							</SelectButton>
+						) : null }
 						<Button
 							ref={this.nextBtn}
 							onClick={this.nextPage}
@@ -90,6 +113,13 @@ export default class Form extends Component {
 						>
 							Next
 						</Button>
+						{ !QUESTIONS[page].required ? (
+							<SelectButton
+								onClick={this.onSkip}
+							>
+								Skip
+							</SelectButton>
+						) : null}
 					</Wrapper>
 				</Container>
 			</ThemeProvider>
