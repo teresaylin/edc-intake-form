@@ -68,3 +68,26 @@ export const Button = styled.button`
 			border: 2px solid #edb6c8;
 		`}
 `;
+
+export const SelectButton = styled(Button)`
+	visibility: visible;
+	color: #70dbb8;
+	border: 2px solid #70dbb8;
+	font-size: x-large;
+	border-radius: 10px;
+	background: transparent;
+`;
+
+// ${props =>
+// 		props.theme.primaryBtn &&
+// 		css`
+// 			background: #70dbb8;
+// 			color: white;
+// 		`}
+
+// 	${props =>
+// 		props.theme.hoverBtn &&
+// 		css`
+// 			background: #70dbb8;
+// 			color: white;
+// 		`}

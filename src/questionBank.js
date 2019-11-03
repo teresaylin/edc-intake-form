@@ -43,15 +43,15 @@ const questions = [
     required: false,
     section: "Client Information"
   },
-
-  // {
-  //   question:
-  //     "Would you like to receive important notifications and documents about the case at this address?",
-  //   description: null,
-  //   inputType: "boolean",
-  //   required: false,
-  //   section: "Client Address"
-  // },
+  {
+    question:
+      "Would you like to receive important notifications and documents about the case at this address?",
+    description: null,
+    inputType: "select",
+    options: ["Yes", "No"],
+    required: false,
+    section: "Client Address"
+  },
   {
     question:
       "Where would you like to receive important notifications and documents?",
@@ -69,14 +69,14 @@ const questions = [
     required: false,
     section: "Emergency Contact"
   },
-  {
-    question: "What is your relationship to your emergency contact?",
-    description: null,
-    inputType: "dropdown",
-    options: ["Spouse", "Parent", "Child", "Friend", "Relative", "Other"],
-    required: false,
-    section: "Emergency Contact"
-  },
+  // {
+  //   question: "What is your relationship to your emergency contact?",
+  //   description: null,
+  //   inputType: "dropdown",
+  //   options: ["Spouse", "Parent", "Child", "Friend", "Relative", "Other"],
+  //   required: false,
+  //   section: "Emergency Contact"
+  // },
   {
     question: "What is the phone number of your emergency contact?",
     description: null,
@@ -95,14 +95,15 @@ const questions = [
   {
     question: "I give permission to discuss my case with my emergency contact",
     description: null,
-    inputType: "boolean",
+    inputType: "select",
+    options: ["Yes", "No"],
     required: false,
     section: "Emergency Contact"
   },
   {
     question: "Are you comfortable speaking English?",
     description: null,
-    inputType: "dropdown",
+    inputType: "select",
     options: ["Yes", "No", "Some"],
     required: false,
     section: "Language Preferences"
@@ -110,14 +111,16 @@ const questions = [
   {
     question: "Do you need an interpreter for court proceedings?",
     description: null,
-    inputType: "boolean",
+    inputType: "select",
+    options: ["Yes", "No"],
     required: false,
     section: "Language Preferences"
   },
   {
     question: "What is your preferred language?",
     description: null,
-    inputType: "dropdownSpecifyOther",
+    inputType: "select",
+    // inputType: "dropdownSpecifyOther",
     options: [
       "English",
       "Spanish",
@@ -132,7 +135,8 @@ const questions = [
   {
     question: "What is your race? (Select all that apply)",
     description: null,
-    inputType: "multiSelect",
+    inputType: "select",
+    // inputType: "multiSelect",
     options: [
       "American Indian / Alaskan Native",
       "Asian",
@@ -147,7 +151,8 @@ const questions = [
   {
     question: "Which best describes your ethnicity?",
     description: null,
-    inputType: "singleSelect",
+    inputType: "select",
+    // inputType: "singleSelect",
     options: ["Hispanic / Latino", "Not Hispanic / Latino"],
     required: false,
     section: "Client Information"

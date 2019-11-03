@@ -70,7 +70,9 @@ export default class Form extends Component {
 	// todo submit button
 	render() {
 		const { page } = this.state;
-		const { question, inputType } = QUESTIONS[page];
+		const { question, inputType, options } = QUESTIONS[page];
+
+		console.log("Form options: ", options);
 		return (
 			<ThemeProvider theme={this.state}>
 				<Container>
@@ -80,6 +82,7 @@ export default class Form extends Component {
 						showNext={this.showNext}
 						nextPage={this.nextPage}
 						page={page}
+						options={options}
 					/>
 					<Wrapper>
 						<Button

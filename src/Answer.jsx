@@ -5,13 +5,15 @@ import styled, { css, ThemeProvider } from "styled-components";
 import { Input } from "./styles";
 import Text from "./Text";
 import NumberPad from "./NumberPad";
+import Select from "./Select";
 
 import QUESTIONS from "./questionBank";
 
 export default class Answer extends Component {
 	render() {
-		const { inputType, showNext, nextPage, page } = this.props;
+		const { inputType, showNext, nextPage, page, options } = this.props;
 
+		console.log("Answer options: ", options);
 		let elem;
 
 		switch (inputType) {
@@ -29,6 +31,10 @@ export default class Answer extends Component {
 						page={page}
 					/>
 				);
+				break;
+
+			case "select":
+				elem = <Select options={options} nextPage={nextPage} />;
 		}
 
 		return elem || <div></div>;
