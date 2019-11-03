@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import styled, { css, ThemeProvider } from "styled-components";
 
-import { SelectButton } from "./styles";
+import { SelectOptionButton } from "./styles";
 
 export default class Select extends Component {
 	inputBox = React.createRef();
@@ -57,7 +57,7 @@ export default class Select extends Component {
 		return (
 			<ThemeProvider theme={this.state}>
 				{options.map((o, index) => (
-					<SelectButton
+					<SelectOptionButton
 						ref={this[`btn_${index}`]}
 						onMouseEnter={() => this.hover(index)}
 						onMouseLeave={() => this.unhover(index)}
@@ -65,7 +65,7 @@ export default class Select extends Component {
 						key={index}
 					>
 						{o}
-					</SelectButton>
+					</SelectOptionButton>
 				))}
 			</ThemeProvider>
 		);

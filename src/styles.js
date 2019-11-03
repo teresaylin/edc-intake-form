@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
 	text-align: center;
-	background: papayawhip;
+	background: white;
 	height: 100vh;
 `;
 
@@ -71,6 +71,10 @@ export const Button = styled.button`
 
 export const SelectButton = styled(Button)`
 	visibility: visible;
+`;
+
+export const SelectOptionButton = styled(Button)`
+	visibility: visible;
 	color: #70dbb8;
 	border: 2px solid #70dbb8;
 	font-size: x-large;
@@ -78,16 +82,14 @@ export const SelectButton = styled(Button)`
 	background: transparent;
 `;
 
-// ${props =>
-// 		props.theme.primaryBtn &&
-// 		css`
-// 			background: #70dbb8;
-// 			color: white;
-// 		`}
+export const PreviousButton = styled(SelectButton)`
+	color: white;
+	background: lightred;
+	border: 1px solid black;
+`;
 
-// 	${props =>
-// 		props.theme.hoverBtn &&
-// 		css`
-// 			background: #70dbb8;
-// 			color: white;
-// 		`}
+export const SkipButton = styled(SelectButton)`
+	color: black;
+	background: white;
+	border: none;
+`;
