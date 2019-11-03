@@ -47,8 +47,8 @@ export const Wrapper = styled.div`
 export const Button = styled.button`
 	background: transparent;
 	border-radius: 3px;
-	border: 2px solid palevioletred;
-	color: palevioletred;
+	border: 2px solid #7093db;
+	color: #7093db;
 	margin: 0 1em;
 	padding: 0.25em 1em;
 	font-size: large;
@@ -57,7 +57,7 @@ export const Button = styled.button`
 	${props =>
 		props.theme.primaryBtn &&
 		css`
-			background: palevioletred;
+			background: #7093db;
 			color: white;
 		`}
 	${props =>
@@ -76,16 +76,16 @@ export const SelectButton = styled(Button)`
 export const SelectOptionButton = styled(Button)`
 	visibility: visible;
 	color: #70dbb8;
-	border: 2px solid #70dbb8;
 	font-size: x-large;
 	border-radius: 10px;
 	background: transparent;
+	border: 2px solid #70dbb8;
 `;
 
 export const PreviousButton = styled(SelectButton)`
 	color: white;
-	background: lightred;
-	border: 1px solid black;
+	background: palevioletred;
+	border: 2px solid palevioletred;
 `;
 
 export const SkipButton = styled(SelectButton)`

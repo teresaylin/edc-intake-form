@@ -52,7 +52,6 @@ export default class Select extends Component {
 	// todo submit button
 	render() {
 		const { options, nextPage } = this.props;
-		console.log("Select options:", options);
 
 		return (
 			<ThemeProvider theme={this.state}>
