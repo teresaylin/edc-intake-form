@@ -18,13 +18,14 @@ export default class Answer extends Component {
 
 		switch (inputType) {
 			case "text":
-				elem = <Text showNext={showNext} nextPage={nextPage} />;
+				elem = <Text key={page} showNext={showNext} nextPage={nextPage} />;
 				break;
 			case "date":
 			case "social":
 			case "phone":
 				elem = (
 					<NumberPad
+						key={page}
 						inputType={inputType}
 						showNext={showNext}
 						nextPage={nextPage}
