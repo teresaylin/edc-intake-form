@@ -40,11 +40,19 @@ const Button = styled.button`
 	padding: 0.25em 1em;
 	font-size: large;
 	visibility: hidden;
+	outline: none;
 	${props =>
 		props.theme.primaryBtn &&
 		css`
 			background: palevioletred;
 			color: white;
+		`}
+	${props =>
+		props.theme.hoverBtn &&
+		css`
+			background: #edb6c8;
+			color: white;
+			border: 2px solid #edb6c8;
 		`}
 `;
 
@@ -54,11 +62,11 @@ export default class Form extends Component {
 
 	state = {
 		page: 0,
-		primaryBtn: false
+		primaryBtn: false,
+		hoverBtn: false
 	};
 
 	componentDidMount() {
-		const { page } = this.state;
 		this.inputBox.current.focus();
 		this.inputBox.current.addEventListener("keypress", e => {
 			this.nextBtn.current.style.visibility = "visible";
@@ -67,14 +75,36 @@ export default class Form extends Component {
 				// 13 is enter
 				// save information to state, flip to next page
 				console.log("enter");
-				this.setState({
-					...this.state,
-					primaryBtn: true,
-					page: page + 1
-				});
+				this.nextPage();
 			}
 		});
 	}
+
+	nextPage = () => {
+		const { page } = this.state;
+		this.setState({
+			...this.state,
+			primaryBtn: true,
+			page: page + 1,
+			hoverBtn: false
+		});
+	};
+
+	buttonHover = () => {
+		this.setState({
+			...this.state,
+			hoverBtn: true,
+			primaryBtn: false
+		});
+	};
+
+	buttonUnhover = () => {
+		this.setState({
+			...this.state,
+			hoverBtn: false,
+			primaryBtn: false
+		});
+	};
 
 	// todo submit button
 	render() {
@@ -84,7 +114,14 @@ export default class Form extends Component {
 					<Question>Please tell us your name</Question>
 					<Input ref={this.inputBox} type="text" placeholder="type here" />
 					<Wrapper>
-						<Button ref={this.nextBtn}>Next</Button>
+						<Button
+							ref={this.nextBtn}
+							onClick={this.nextPage}
+							onMouseEnter={this.buttonHover}
+							onMouseLeave={this.buttonUnhover}
+						>
+							Next
+						</Button>
 					</Wrapper>
 				</Container>
 			</ThemeProvider>
