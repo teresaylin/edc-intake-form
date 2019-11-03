@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { Question, Input, Container, Wrapper, Button, SelectButton } from "./styles";
 import QUESTIONS from "./questionBank";
 
+import Header from "./Header";
 import Text from "./Text";
 import NumberPad from "./NumberPad";
 import Answer from "./Answer";
@@ -89,6 +90,7 @@ export default class Form extends Component {
 		const { question, inputType } = QUESTIONS[page];
 		return (
 			<ThemeProvider theme={this.state}>
+				<Header progress={page / QUESTIONS.length}/>
 				<Container>
 					<Question>{QUESTIONS[page].question}</Question>
 					<Answer
