@@ -13,8 +13,8 @@ export default class Header extends Component {
 			<div>
 				<div style={{float: 'left'}}><img src="edc-logo-header.png" alt="Logo" width="150px"/></div>
 				<div>
-		      <div style={{width: 'calc(100% - 22px)', height: '30px', margin: '10px', border: '1px solid black', borderRadius: '5px'}}>
-						<div style={{width: progressValue + '%', height: '100%', backgroundColor: 'lightblue'}}></div>
+		      <div style={{width: 'calc(100% - 22px)', height: '50px', margin: '10px', border: '1px solid black', borderRadius: '10px'}}>
+						<div style={{width: progressValue + '%', height: '100%', backgroundColor: 'lightblue', borderRadius: '10px'}}></div>
 					</div>
 					<div style={{margin: '10px'}}>{ progressString + '% complete'}</div>
 				</div>

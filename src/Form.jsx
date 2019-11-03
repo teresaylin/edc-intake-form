@@ -2,7 +2,16 @@ import React, { Component } from "react";
 
 import { ThemeProvider } from "styled-components";
 
-import { Question, Input, Container, Wrapper, Button, SelectButton } from "./styles";
+import {
+	Question,
+	Input,
+	Container,
+	Wrapper,
+	Button,
+	SelectButton,
+	SkipButton,
+	PreviousButton,
+} from "./styles";
 import QUESTIONS from "./questionBank";
 
 import Header from "./Header";
@@ -101,11 +110,11 @@ export default class Form extends Component {
 					/>
 					<Wrapper>
 						{ page !== 0 ? (
-							<SelectButton
+							<PreviousButton
 								onClick={this.previousPage}
 							>
 								Previous
-							</SelectButton>
+							</PreviousButton>
 						) : null }
 						<Button
 							ref={this.nextBtn}
@@ -116,11 +125,11 @@ export default class Form extends Component {
 							Next
 						</Button>
 						{ !QUESTIONS[page].required ? (
-							<SelectButton
+							<SkipButton
 								onClick={this.onSkip}
 							>
 								Skip
-							</SelectButton>
+							</SkipButton>
 						) : null}
 					</Wrapper>
 				</Container>

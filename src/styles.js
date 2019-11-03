@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
 	text-align: center;
-	background: papayawhip;
+	background: white;
 	height: 100vh;
 `;
 
@@ -71,4 +71,16 @@ export const Button = styled.button`
 
 export const SelectButton = styled(Button)`
 	visibility: visible;
+`;
+
+export const PreviousButton = styled(SelectButton)`
+	color: white;
+	background: lightred;
+	border: 1px solid black;
+`;
+
+export const SkipButton = styled(SelectButton)`
+	color: black;
+	background: white;
+	border: none;
 `;
